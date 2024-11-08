@@ -40,7 +40,8 @@ const Navbar = () => {
           <Link href="/" className="text-blue-300 hover:text-blue-300 font-bold mb-2">Home</Link>
           <Link href="/about" className="text-blue-300 hover:text-blue-300 font-bold mb-2">About</Link>
           <Link href="/projects" className="text-blue-300 hover:text-blue-300 font-bold mb-2">Projects</Link>
-          <Link href="/skills" className="text-blue-300 hover:text-blue-300 font-bold mb-2">Contact</Link>
+          <Link href="/skills" className="text-blue-300 hover:text-blue-300 font-bold mb-2">Skills</Link>
+          <Link href="/contact" className="text-blue-300 hover:text-blue-300 font-bold mb-2">Contact</Link>
         </div>
       )}
     </nav>
