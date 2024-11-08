@@ -1,101 +1,94 @@
-import Image from "next/image";
+'use client';
+import React from 'react';
+import Image from 'next/image';
+import Typewriter from 'typewriter-effect';
+import { useRouter } from 'next/navigation';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer'; // Import the Footer component
 
-export default function Home() {
+const HomePage = () => {
+  const router = useRouter();
+
+  const handleHireMeClick = () => {
+    router.push('/contact'); // Navigate to the contact page
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div>
+      <Navbar /> {/* Use your Navbar component here */}
+      
+      <main className="container mx-auto p-8 flex flex-col md:flex-row items-center justify-between">
+        {/* Left Section: Your Picture */}
+        <div className="flex-1 flex justify-center items-center mb-8 md:mb-0">
+          <Image
+            src="/images/profilee.jpg" // Update with your image path
+            alt="Muskan Nisar"
+            className="rounded-full border-4 border-blue- shadow-lg object-cover" // Ensure image fits the circle
+            width={300} // Adjust size as needed
+            height={300} // Adjust size as needed
+          />
+        </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+        {/* Right Section: Description and Services */}
+        <div className="flex-1 md:ml-12 space-y-6 text-center md:text-left">
+          <h1 className="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-blue-600">
+            Hi! I'm Muskan Nisar
+          </h1>
+
+          {/* Typewriter Effect */}
+          <h2 className="text-3xl font-semibold text-blue-950">
+            <Typewriter
+              options={{
+                strings: [
+                  'A Passionate Front End Developer',
+                  'Certified IT Support Specialist',
+                  'Certified UI/UX Designer',
+                ],
+                autoStart: true,
+                loop: true,
+              }}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </h2>
+
+          {/* About Me Paragraph */}
+          <p className="text-lg text-blue-900 font-light">
+            I’m driven by a passion for creating visually stunning and highly functional websites that provide seamless user experiences. With a strong focus on front-end development, I love transforming ideas into interactive, responsive designs. As a Certified IT Support Specialist and a Certified UI/UX Designer, I bring expertise in both technical troubleshooting and user-centered design, ensuring that each project is as functional as it is beautiful.
+          </p>
+
+          {/* Services List */}
+          <h3 className="text-2xl text-blue-950 font-semibold">Services:</h3>
+          <ul className="list-disc list-inside text-lg space-y-2">
+            <li>Create Responsive Websites</li>
+            <li>Design User-Friendly Interfaces</li>
+            <li>Build Front-end Web Solutions</li>
+            <li>Automate IT Support</li>
+            <li>Craft Engaging UI/UX Designs</li>
+          </ul>
+
+          {/* Hire Me Button */}
+          <div className="mt-8 flex space-x-6">
+            {/* Hire Me Button */}
+            <button
+              onClick={handleHireMeClick}
+              className="border-2 border-blue-950 text-blue-950 py-2 px-6 rounded-lg hover:bg-blue-950 hover:text-white hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 ease-in-out"
+            >
+              Hire Me
+            </button>
+
+            {/* View Resume Button */}
+            <button
+              onClick={() => window.location.href = '/resume.pdf'} // Trigger download of PDF
+              className="border-2 border-blue-950 text-blue-950 py-2 px-6 rounded-lg hover:bg-blue-950 hover:text-white hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 ease-in-out"
+            >
+              View Resume
+            </button>
+          </div>
         </div>
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+      <Footer /> {/* Displaying the Footer */}
     </div>
   );
-}
+};
+
+export default HomePage;
